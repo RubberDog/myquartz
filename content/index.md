@@ -1,6 +1,4 @@
----
-title: Welcome to Quartz
----
+Folgende Module sind hier bislang festgehalten:
 
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
+[[4n6-Website|Computer-Forensik I]]
+

@@ -1,7 +1,7 @@
 
 Wenn eine Datei z.B. mittels [[icat]] aus einem Image extrahiert wurde, sollte man danach mittels
-`file dateiname` prüfen, ob der Dateityp der Erwartung entspricht.
-In der [[VL 24.03.2026]] wurde dort z.B. das Dateiformat "MS Windows Registry File, NT/2000 or above" bzw "Microsoft Outlook Personal Storage" erwähnt.
+`file dateiname` prüfen, ob der Dateityp der Erwartung entspricht.\
+In der [[VL 24.03.2026]] wurde dort z.B. das Dateiformat "MS Windows Registry File, NT/2000 or above" bzw "Microsoft Outlook Personal Storage" erwähnt.\
 
 Auch wenn dabei ein falsches Ergebnis herauskommt können so durch die Überprüfung noch Teil-Punkte gegeben werden!
 

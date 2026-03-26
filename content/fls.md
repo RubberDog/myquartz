@@ -12,7 +12,7 @@ Hier ein Beispielaufruf, um Dateien mit "SAM" im Dateinamen in einem gemounteten
 
 `-i` ignoriert den Case (Groß- / Kleinschreibung)
 
-`SAM$` besagt, dass der Suchbegriff SAM lautet, durch das `$` ist festgelegt, dass der Datei- / Ordnername mit SAM endet
+`SAM$` besagt, dass der Suchbegriff SAM lautet, durch das `$` ist festgelegt, dass der Datei- / Ordnername mit SAM endet.
 
 Die Ausgabe kann dann sein;
 
