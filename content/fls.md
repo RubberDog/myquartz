@@ -25,3 +25,15 @@ Gleiches funktioniert auch für die Registry-Hives System und Software via\
 `fls -pr /dev/loop0p2 | grep SOFTWARE$`
 
 Ganz wichtig auch die `NTUSER.DAT$` - aufpassen! Diese Datei gibt's für jeden einzelnen Nutzer!
+
+-----
+
+Timeline erstellen;
+
+`fls -pr -m "c:" /dev/loop0p2 > bodyfile`
+
+`fls -pr` wurde oben schon erklärt.\
+`-m "mountpoint"` gibt einen Mountpoint an, der fls in der Pfadangabe als "Anfang" dient.\
+Bei Windows wäre dies z.B. "c:", wenn es sich bei dem Image um das C-Laufwerk handelt. Unter Linux könnte es beispielsweise direkt "/", das root-Verzeichnis sein, oder aber "/home/", oder was auch immer. Das sollte man vorher feststellen.\
+`/dev/loop0p2` ist das Image im loop-Device, welches durch fls betrachtet werden soll.\
+Zuletzt dann `> bodyfile`, um es in eine Datei "bodyfile" im aktuellen Verzeichnis zu schreiben.

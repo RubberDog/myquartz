@@ -1,4 +1,7 @@
 
+Zu allererst; Achtet darauf, dass eure VM mit genügend CPU und RAM ausgestattet ist.
+Das meiste klappt auch so, aber spätestens bei Plaso dauert's sonst sehr lange
+
 Fangen wir an mit [[APL-Hinweise]]n
 
 Grundsätzlicher Ablauf:
@@ -20,11 +23,15 @@ Darüber finden sich alle relevanten [[timestamps]].
 
 Möchte mir dann die Datei, oder als ersten Schritt unter Windows die Registry-Hives außerhalb zur genaueren Untersuchung sichern, mache ich das entweder "logisch" via `cp` über das Dateisystem, oder hole mir die Datei durch [[icat]] aus dem Image und schreibe sie z.B. in das `/tmp/`-Verzeichnis.
 
-Für Registry-Hives empfiehlt sich der Einsatz von [[regripper]] mit seinen Zahlreichen Plugins.\
-Es ist jedoch keine Wunderwaffe - für die APL wird's wohl reichen, in der realität bietet sich häufiger auch ein Blick via Registry-Editor o.ä. an, um ggf. auch korelationen bilden zu können, wie die GUID einer Festplatte mit den (hoffentlich) verfügbaren Infos zu Hersteller, Modell und Speicherkapazität in Verbindung zu bringen. 
+Für Registry-Hives empfiehlt sich der Einsatz von [[regripper]] mit seinen zahlreichen Plugins.\
+Es ist jedoch keine Wunderwaffe - für die APL wird's wohl reichen, in der Realität bietet sich häufiger auch ein Blick via Registry-Editor o.ä. an, um ggf. auch Korrelationen bilden zu können, wie die GUID einer Festplatte mit den (hoffentlich) verfügbaren Infos zu Hersteller, Modell und Speicherkapazität in Verbindung zu bringen. 
 
+---------
+Work in Progress;
 
-[[mactime]]
+Timeline erstellen:  
+- mit [[fls]] und [[mactime]], "normale Timeline"
+- mit log2timeline, "Supertimeline" via Plaso - braucht auch bei kleineren Images ziemlich lange
 [[vshadowinfo]]
 [[vshadowmount]]
 [[readpst]]
