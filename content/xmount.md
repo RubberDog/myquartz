@@ -31,3 +31,5 @@ Unterstützte Formate sind:
 - vmdk (VMWare Virtual Machine Disk)
 
 Wichtig: In der 4n6-VM existiert `ewf` noch nicht - vorher anlegen! (`sudo mkdir /ewf` oder ein beliebiges anderes Verzeichnis)
+
+Weiter geht's dann in [[losetup]]

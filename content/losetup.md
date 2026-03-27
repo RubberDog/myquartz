@@ -22,3 +22,5 @@ Einfacher geht das ganze, wenn man `losetup` sämtliche Partitionen des Image zu
 Schaut man sich dann einmal mittels `ll` (gleichbedeutend mit `ls -la`) den Inhalt von `/dev/loop0*` an, so finden sich hier alle Partitionen;
 
 ![[Pasted image 20260325105845.png]]
+
+Weiter in [[fls]]

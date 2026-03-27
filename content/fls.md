@@ -19,3 +19,9 @@ Die Ausgabe kann dann sein;
 ![[Pasted image 20260326110250.png]]
 
 Die markierte Zahl stellt die Nummer des inode da, welchen wir in der Folge für [[istat]] oder [[icat]] benötigen.
+
+Gleiches funktioniert auch für die Registry-Hives System und Software via\
+`fls -pr /dev/loop0p2 | grep SYSTEM$` und \
+`fls -pr /dev/loop0p2 | grep SOFTWARE$`
+
+Ganz wichtig auch die `NTUSER.DAT$` - aufpassen! Diese Datei gibt's für jeden einzelnen Nutzer!

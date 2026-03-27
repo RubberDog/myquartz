@@ -9,6 +9,6 @@ kann die jeweilige inode ausgegeben werden:
 (*Erläuterung zum oben ausgeführten Befehl unter [[fls]]*)
 
 Die Anzeige von\
-`istat /dev/loop0p2 59953` zeigt dann die [[timestamps]] und weitere Informationen;\
+`istat /dev/loop0p2 59953` zeigt dann die [[timestamps]] und weitere Informationen;
 
 ![[Pasted image 20260326110627.png]]
