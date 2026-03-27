@@ -32,10 +32,14 @@ Work in Progress;
 Timeline erstellen:  
 - mit [[fls]] und [[mactime]], "normale Timeline"
 - mit log2timeline, "Supertimeline" via Plaso - braucht auch bei kleineren Images ziemlich lange
-[[vshadowinfo]]
-[[vshadowmount]]
-[[readpst]]
-[[sccainfo]]
+
+ToDo
+- [[vshadowinfo]]
+- [[vshadowmount]]
+- [[readpst]]
+- [[sccainfo]]
+- [[bulk_extractor]]
+- [[fsstat]]
 
 
 VL 24.3. bis -1:20:17

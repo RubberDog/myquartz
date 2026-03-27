@@ -40,7 +40,7 @@ Dort den "Type" auf USB ändern, die gefundene Vid (4-stellig) als Vendor-ID und
 
 -----------
 
-`-p mountdev` gibt Informationen zu gemounteten Geräten an, z.B. auch der Laufwerksbuchstabe.\
+`-p mountdev` / ggf `mountdev2` gibt Informationen zu gemounteten Geräten an, z.B. auch der Laufwerksbuchstabe.\
 ![[Pasted image 20260327104316.png]]
 
 Eine Zuordnung, um welches Gerät (Hersteller, Modell, etc) es sich handelt ist darüber aber nicht möglich.\
@@ -49,3 +49,14 @@ Es gibt nur Volume-IDs aus, die man im registry-Hive SYSTEM wohl irgendwo unter 
 -----------------
 Eventuell hilft bei USB-Festplatten `-p wpdbusenum` - kann ich aktuell leider nicht verifizieren, jedoch soll es als "Windows Portable Device BUS Enumeration" prinzipiell genau dafür da sein.. im Dell-Image sind keine Daten zu externen USB-Festplatten.\
 ![[Pasted image 20260327105439.png]]
+
+
+Weitere interessante Plugins:
+
+- timezone
+- prefetch
+- networklists
+- putty
+- shimcache
+- update mountdev / mountdev2
+- listsoft
