@@ -4,6 +4,10 @@ Das meiste klappt auch so, aber spätestens bei Plaso dauert's sonst sehr lange
 
 Fangen wir an mit [[APL-Hinweise]]n
 
+Weiterer Tipp;\
+Arbeitet ihr dauerhaft als Benutzer `root` ist das aus IT-Sicherheitssicht zwar eine Vollkatastrophe, jedoch spart ihr euch nerviges Suchen wenn euer System mal behauptet ein Kommando nicht zu kennen, weil es nur für root zur Verfügung steht, oder einen Befehl nochmal aufzurufen, weil ihr das `sudo` am Anfang der Zeile vergessen habt.. passiert mir übrigens auch immer mal wieder.\
+Für ein Grinsen nebenbei sei an dieser Stelle das Projekt [The Fuck](https://github.com/nvbn/thefuck) erwähnt.
+
 Grundsätzlicher Ablauf:
 
 Image (.E01 (EWF, Expert Witness Format)) herunterladen.
@@ -33,13 +37,20 @@ Timeline erstellen:
 - mit [[fls]] und [[mactime]], "normale Timeline"
 - mit log2timeline, "Supertimeline" via Plaso - braucht auch bei kleineren Images ziemlich lange
 
-ToDo
+
+
 - [[vshadowinfo]]
 - [[vshadowmount]]
+- [[fsstat]]
+
+ToDo
+
 - [[readpst]]
 - [[sccainfo]]
 - [[bulk_extractor]]
-- [[fsstat]]
+- [[mmls]]
+- [[prefetch]]
+
 
 
 VL 24.3. bis -1:20:17
