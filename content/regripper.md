@@ -1,6 +1,11 @@
+
 regripper ist in keiner der VMs vorinstalliert.\
 Es kann aber einfach aus den Repositories installiert werden, in der 4n6-VM mittels\
 `sudo apt install regripper`
+
+Eine kurze Übersicht, welche Infos (mit welchem Plugin) in welchem Hive zu finden sind gibt's in der [[Hive-Übersicht]].
+Wichtig: Diese Liste ist nicht vollständig, zeigt nur auf den ersten Blick relevante Plugins!
+
 
 Die vorhandenen Plugins können mittels\
 `regripper -l`\
@@ -13,6 +18,8 @@ Es sind allerdings 249 verschiedene Plugins vorinstalliert - mittels `grep` kann
 -  die Option `-1` sorgt für die Ausgabe der Zeile vor und nach dem Treffer - falls man das Wort in der Beschreibung, nicht aber im Plugin-Namen trifft
 - die Option `-i` ignoriert lower- / uppercase
 - `win` ist das gesuchte Wort.
+
+Hinter jedem Plugin-Namen steht in eckigen Klammern der Hive, welcher die Informationen enthält!
 
 Beispielhafter Aufruf für Betriebssystem-Informationen:\
 `regripper -p winver -r SOFTWARE`
@@ -58,5 +65,5 @@ Weitere interessante Plugins:
 - networklists
 - putty
 - shimcache
-- update mountdev / mountdev2
+- mountdev / mountdev2
 - listsoft
