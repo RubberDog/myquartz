@@ -144,4 +144,48 @@ Beispiele:
 
 ### Transaktionen
 
+Es gibt drei Unterschiedliche Zugriffsarten:
+- Abfragen (auch genannt Query)
+- Mutation (Änderung)
+- Transaktion
+
+Abfragen HIER LINK und Mutationen HIER LINK sind inhaltlich selbsterklärend.\
+Bei einer Transaktion handelt es sich um eine Operation, um die Konsistenz zu erhalten.\
+Als Beispiel wird eine Überweisung zwischen zwei Konten einer Bank genannt;\
+Neben den Kontoständen der Konten A und B wird üblicherweise auch ein Saldo gespeichert, also die Summe aller Kontostände.\
+Wird nun von Konto A zu Konto B eine Summe x überwiesen, so wird diese zuerst von Konto A abgezogen, in einer zweiten Operation zu Konto B hinzugefügt.\
+Zwischen diesen beiden Operationen existiert eine Inkonsistenz der Daten - da von Konto A eine Summe abgezogen, aber Konto B noch nicht gutgeschrieben wurde, ist das Saldo der Bank um Summe x höher, als die - zu diesem Zeitpunkt - tatsächliche Summe aller Kontostände.\
+Während es sich also beim Abzug der Summe x von Konto A, als auch bei dem hinzufügen von Summe x zu Konto B jeweils um eine Mutation HIER LINK handelt, so ist die Gesamtheit der Operationen zur Wiederherstellung der Konsistenz - in diesem Fall also zwei Operationen - als Transaktion bezeichnet.
+
+Konsistenz bezeichnet die Freiheit von Widersprüchen innerhalb einer Datenbank.\
+Wichtig ist, dass eine Redundanz von Daten aufgrund ihres vielfachen Vorkommenns den Aufwand erhöht, um diese Daten konsistent zu halten.\
+Zweitens heißt es im Buch, dass __alle__ Zugriffe in einer kommerziellen Datenbankanwendung zwingend Transaktionen sind.\
+Das [[DBMS - Motivation#Begriffe|DBMS]] muss auch im Falle eines Rechnerabsturzes eine Konsistenz der Daten aufrecht erhalten. Daher sorgt es dafür, dass jede Transaktion [atomar](https://de.wikipedia.org/wiki/Atomare_Operation#Atomare_Datenbank-Operationen) abläuft
+
 ### Konsistenzmodell ACID
+
+ACID ist eine Abkürzung für vier Eigenschaften, welche im Transaktionsbetrieb erwartet werden;
+- **A**tomarity (Atomarität)
+- **C**onsistency (Konsistenz)
+- **I**solation
+- **D**urability (Dauerhaftigkeit)
+
+**Atomarity** bedeutet, dass jede Transaktion zusammenhängend und vollständig ausgeführt, oder gar nicht.\
+Relationale Datenbanken haben dafür zwei wichtige Befehle;
+- COMMIT;
+	- beendet eine Transaktion
+- ROLLBACK;
+	- wird ausgeführt, wenn kein COMMIT; existiert - macht die Änderung Rückgängig
+
+
+Kurze Erklärung die über das Buch hinaus geht, aber beim Verständnis hilft (kein einfaches "isso"):
+
+Sendet ein Client Operationen an ein DBMS, so werden die Änderungen sofort ausgeführt, jedoch in einem [WAL-File](https://de.wikipedia.org/wiki/WAL-Prinzip) (**W**rite **A**head **L**og) gespeichert, welches je nach Konfiguration des Servers entweder periodisch fest in die Datenbank übernommen wird, oder nach erreichen einer festgelegten WAL-Datei-Größe.\
+Stürzt der Server ab, während Änderungen ohne COMMIT;-Befehl im WAL-File vorhanden sind, so werden die Änderungen beim Neustart und dem damit verbundenen einlesen der WAL-File(s) verworfen.\
+Stürzt der Client während der Übertragung von Operationen ab, so stellt der Server den Abbruch der Verbindung auf Netzwerk-Ebene (TCP/IP) fest. Schließt kein COMMIT; die übertragenen Änderungen ab, so werden sie sofort vom Server verworfen.
+
+**Consistency** wird durch eben jene atomare Ausführung gewährleistet.
+
+**Isolation** meint hier, dass im heute üblichen Mehrbenutzerbetrieb jede Transaktion so behandelt werden muss, als sei sie die einzige im System - Details dazu später HIER EIN LINK UND ANGEPASSTER NAME
+
+**Durability** heißt tatsächlich nur ganz simpel, das einmal abgeschlossene Transaktionen bzw. abgespeicherte Daten nicht verloren gehen dürfen.
