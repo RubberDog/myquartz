@@ -10,8 +10,8 @@ Da der Entwurf einer solchen Datenbank, welche als einzige Redundanz Primär- un
 
 | Begriff | Bedeutung | Beispiel(e) |
 | --- | --- | --- |
-| Entität | Ein eindeutig unterscheidbares Objekt bzw. ein unterscheidbares Element | Person, Werkzeug, Produkt, Rechnung |
-| Eigenschaft | Ein Teil einer Entität, welche diese Entität beschreibt | Name, Vorname, PLZ, Ort, Preis |
+| Entität | Ein eindeutig unterscheidbares Objekt bzw. ein unterscheidbares Element | Person, Werkzeug |
+| Eigenschaft | Ein Teil einer Entität, welche diese Entität beschreibt | Name, Vorname, PLZ, Ort |
 | Beziehung | Eine Entität, die zwei oder mehr Entitäten miteinander verknüpft | Die Entitäten Verkäufer und Produkt stehen in einer Beziehung: Verkäufer verkaufen Produkte | 
 | Subtyp | Eine Entität, die Teil einer anderen, umfassenderen Entität ist | Die Entität Verkäufer ist ein Subtyp zu Mitarbeiter |
 | Supertyp | Eine Entität, die Subtypen besitzt | Die Entität Mitarbeiter ist ein Supertyp von Verkäufer |
@@ -315,4 +315,85 @@ Ein Mitarbeiter hat keinen oder einen Firmenwagen. Genauso kann ein existierende
 
 ### Fremdschlüsseleigenschaften
 
-weiter geht's auf pdf 102
+Beim erzeugen von Fremdschlüsseln sollte man sich drei Fragen beantworten;
+- Darf ein Fremdschlüsselwert leer bleiben, also NULL-Werte enthalten?
+- Darf ein Tupel **gelöscht** werden, auf den sich ein Fremdschlüssel bezieht, und wie sollte die Datenbank reagieren?
+- Darf ein Tipel **geändert** werden, auf den Sich ein Fremdschlüssel bezieht, und wie sollte die Datenbank reagieren?
+
+NULL-Values können in einigen Fällen sinnvoll sein - ein weiteres Beispiel dafür wäre die Datenbank einer KFZ-Meldestelle;\
+Ein Halter kann eines oder mehrere KFZ anmelden. Ein KFZ kann aber auch abgemeldet werden, ist dann nicht zugelassen und hat keinen Halter.\
+Daraus ergibt sich eine `M zu C`-Beziehung. Den Fremdschlüssel würde man also in der M-Beziehung, also dem KFZ, als z.B. "Halternr" hinzufügen.
+
+Ein Beispiel, in dem NULL-values sinnlos sind wäre eine Datenbank zu Kundenbestellungen;\
+Eine Bestellung ohne Kunden kann nicht existieren, eine Bestellung kann nicht mehrere Kunden haben - somit liegt hier eine `M zu 1`-Beziehung vor.\
+Beim Erstellen des Tables würde man daher für das Feld "Kundennr" in den Bestellungen die Bedingung `NOT NULL` einfügen.
+
+Analog zu `M zu 1` gilt das gleiche für `C zu 1`, bzw. `M zu C` auch für `C zu C`.\
+In `zu 1`-Beziehungen darf niemals ein "NULL"-Wert vorkommen - ist der Fremdschlüssel nicht der Primärschlüssel, so muss die Bedingung `NOT NULL` eingefügt werden.\
+In `zu C`-Beziehungen kann `NULL` vorkommen, in diesem Fall kann der Fremdschlüssel jedoch nicht der Primärschlüssel sein.\
+`zu N`-Beziehungen sind nicht erwähnt, lassen sich laut Buch aber immer in `zu C`- oder `zu 1`-Beziehungen auflösen.
+
+Damit wäre die erste der drei Fragen geklärt - die anderen beiden werden in der Referenz-Integritätsregel HIER EIN LINK behandelt;\
+Ein Tupel, auf das sich ein Fremdschlüssel bezieht, darf nicht einfach gelöscht werden. Ebenso darf der Primärschlüssel eines solchen Tupels nicht verändert werden, da sonst die Integritätsregel verletzt würde.\
+Beim Löschen eines Eintrags mit Fremdschlüssel-Bezug gibt es drei Möglichkeiten, die beim erstellen des Tables mit angegeben werden müssen (wird keine angegeben, ist "ON DELETE NO ACTION" der default);
+- `ON DELETE NO ACTION`: Das Löschen wird verweigert, sofern mindestens ein Fremdschlüssel darauf verweist
+- `ON DELETE CASCADE`: Durch Löschung werden kaskadierend alle Einträge gelöscht, die per Fremdschlüssel darauf verweisen (soweit erlaubt)
+- `ON DELETE SET NULL`: Alle Fremdschlüssel die hierauf verweisen werden auf `NULL` gesetzt
+Ein Beispiel: Wir haben zwei Tables, "orders" und "order_items".\
+"order_items" enthält die ID einer order als Foreign-Key. Für die drei genannten Varianten würde nun folgendes passieren:
+- `NO ACTION` - solange es noch Items gibt, die zu einer vorhandenen Order gehören, wird das löschen verweigert.
+- `CASCADE` - hier will SQL den Eintrag löschen und den Löschbefehl weitergeben. Dazu wird zuerst geprüft, ob die Löschung erlaubt ist - wenn `order_items` ein `NO ACTION` gesetzt hat, ist es verboten - nicht wird gelöscht. Haben wir Ebenen "darunter", so müssen alle entweder `CASCADE` haben um den Befehl weiterzugeben, oder eine Ebene steht auf `SET NULL`, dann stoppt die Lösch-Kaskade dort. Hat irgendeine Ebene `NO ACTION`, so wird keiner der Löschbefehle ausgeführt.
+- `SET NULL` - das klappt natürlich nicht bei `M zu 1`- oder `C zu 1`-Beziehungswerten, da durch das `1` immer eine relation vorhanden sein muss. Ansonsten wird der Eintrag gelöscht, der darauf verweisende Foreignkey wird auf `NULL` gesetzt.
+
+Ändern von Primärschlüsseln ist sehr selten, da vergebene Primärschlüssel so gut wie nie manipuliert werden (sollten).\
+Die Optionen, sollte es doch mal nötig sein, sind die gleichen wie beim Löschen;
+- `ON UPDATE NO ACTION`: Eine Änderung wird verweigert, wenn ein Fremdschlüssel darauf verweist
+- `ON UPDATE CASCADE`: Eine Änderung wird Kaskadierent weitergegeben, es werden also auch alle Fremdschlüsseleinträge geändert, die auf diesen Primärschlüssel verweisen
+- `ON UPDATE SET NULL`: Alle Fremdschlüssel, die auf diesen Primärschlüssel verweisen, werden auf `NULL` gesetzt
+
+`SET NULL` ist vermutlich niemals eine gute Lösung da man alle Fremdschlüssel verliert - was bei komplexen Datenbanken ein absolutes Desaster sein kann, `NO ACTION` würde den Eintrag entfernen, wenn nichts darauf verweist.\
+`CASCADE` dürfte die sinnvollste Option sein, da Änderungen entsprechend weitergegeben werden.
+
+Anhand des Beispiel-Tables `Verknüpfung` HIER EIN TEXT-LINK von vorhin einmal dargestellt, wie dieser Table erstellt würde;\
+```
+CREATE TABLE Verknuepfung
+( VerkNr CHARACTER(4) REFERENCES Verkaeufer
+         ON DELETE NO ACTION ON UPDATE CASCADE,
+  ProdNr CHARACTER(4) REFERENCES Produkt
+         ON DELETE NO ACTION ON UPDATE CASCADE,
+  Umsatz INTEGER,
+  PRIMARY KEY (VerkNr, ProdNr)
+);
+```
+
+#### Schwache Entitäten und Subtypen
+
+Als Beispiel wird hier wieder auf die Tables `Person` und `Arbeitszeit` zurückgegriffen.
+Die Beziehung ist `1 zu m`, d.h. jeder Arbeitszeiteintrag ist einer einzelnen Person zuzuordnen, aber jede Person kann beliebig viele Arbeitszeiteinträge haben.\
+Daher gehört der Fremdschlüssel in die Relation `Arbeitszeit`, beispielsweise die Personalnummer, um die Person eindeutig identifizieren zu können.\
+Wichtig ist auch, welche Eigenschaften der Fremdschlüssel bekommt;
+Ein Eintrag in der Arbeitszeit muss immer einer Person zuzuordnen sein und Änderungen an der Personalnummer müssen übernommen werden. Daher wären die Optionen folgende;\
+```
+NOT NULL
+ON UPDATE CASCADE
+ON DELETE CASCADE
+```
+Durch `NOT NULL`und `ON DELETE CASCADE` wird sichergestellt, dass kein Zeiteintrag ohne Personalnummer existiert.\
+Durch `ON UPDATE CASCADE` wird sichergestellt, dass bei einer Ädnerung der Personalnummer auch die Personalnummer in den Arbeitszeiteinträge aktualisiert wird.
+
+Wichtiger Satz aus dem Buch: In schwachen Entitäten hat der Fremdschlüssel IMMER diese drei Eigenschaften.\
+Außerdem: Eine Schwache Entität kann identifiziert werden, wenn sie genau einen Fremdschlüssel mit diesen drei Eigenschaften besitzt und kein Fremdschlüssel auf diese Relation verweist.
+
+Ein kurzer Blick zu Subtypen:\
+Auf Seite 84 (96 der PDF) wird ein Beispiel mit dem Supertyp "Mitarbeiter" sowie den Subtypen "Verkäufer" und "Informatiker" gezeigt. Die Aufteilung ist auch sinnvoll, da jede Berufsklasse unterschiedliche, relevante Eigenschaften hat. Damit nicht jede mögliche Eigenschaft im Table "Mitarbeiter" steht und nur `NULL`-Values bekommt, gibt es eben Subtypen.\
+Ein create Table für Verkäufer sähe z.B. so aus;\
+```
+CREATE TABLE Verkaeufer
+( PersNr INTEGER REFERENCES Mitarbeiter
+         ON DELETE CASCADE ON UPDATE CASCADE,
+  PRIMARY KEY (PersNr),
+  ...
+);
+```
+Die Eigenschaft `NOT NULL` entfällt hier im Fremdschlüssel, da dieser gleichzeitig auch Primärschlüssel ist. Bei Subtypen ist dies typisch.\
+Man kann sich also merken, dass Subtypen einen Fremdschlüssel mit den Eigenschaften `NOT NULL`, `ON DELETE CASCADE` und `ON UPDATE CASCADE` hat, wobei dieser fremdschlüssel auch Schlüsselkandidat und in der Regel auch der Primärschlüssel ist.
