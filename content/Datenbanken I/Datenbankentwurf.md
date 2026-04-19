@@ -3,22 +3,22 @@
 Relationen werden in den Inhalten von Woche3 HIER EIN LINK erklärt.
 
 Um eine komplette Datenbank zu designen, müssen Relationen erstellt werden.\
-Zur guten Handhabung und verminderung von Redundanzen wird Normalisierung HIER EIN LINK genutzt.\
+Zur guten Handhabung und Verminderung von Redundanzen wird Normalisierung HIER EIN LINK genutzt.\
 Da der Entwurf einer solchen Datenbank, welche als einzige Redundanz Primär- und Fremdschlüssel besitzen sollte, nicht trivial ist nutzt man das vielfach bewährte ER-Modell.
 
 ### Entitäten
 
-| Begriff | Bedeutung | Beispiel(e) |
-| --- | --- | --- |
-| Entität | Ein eindeutig unterscheidbares Objekt bzw. ein unterscheidbares Element | Person, Werkzeug |
-| Eigenschaft | Ein Teil einer Entität, welche diese Entität beschreibt | Name, Vorname, PLZ, Ort |
-| Beziehung | Eine Entität, die zwei oder mehr Entitäten miteinander verknüpft | Die Entitäten Verkäufer und Produkt stehen in einer Beziehung: Verkäufer verkaufen Produkte | 
-| Subtyp | Eine Entität, die Teil einer anderen, umfassenderen Entität ist | Die Entität Verkäufer ist ein Subtyp zu Mitarbeiter |
-| Supertyp | Eine Entität, die Subtypen besitzt | Die Entität Mitarbeiter ist ein Supertyp von Verkäufer |
-| Schwache Entität | Eintität, die von einer anderen Eintität vollständig abhängig ist | Die Entität Arbeitszeit ist schwach gegenüber der Entität Mitarbeiter |
+| Begriff          | Bedeutung                                                               | Beispiel(e)                                                                                 |     |
+| ---------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | --- |
+| Entität          | Ein eindeutig unterscheidbares Objekt bzw. ein unterscheidbares Element | Person, Werkzeug                                                                            |     |
+| Eigenschaft      | Ein Teil einer Entität, welche diese Entität beschreibt                 | Name, Vorname, PLZ, Ort                                                                     |     |
+| Beziehung        | Eine Entität, die zwei oder mehr Entitäten miteinander verknüpft        | Die Entitäten Verkäufer und Produkt stehen in einer Beziehung: Verkäufer verkaufen Produkte |     |
+| Subtyp           | Eine Entität, die Teil einer anderen, umfassenderen Entität ist         | Die Entität Verkäufer ist ein Subtyp zu Mitarbeiter                                         |     |
+| Supertyp         | Eine Entität, die Subtypen besitzt                                      | Die Entität Mitarbeiter ist ein Supertyp von Verkäufer                                      |     |
+| Schwache Entität | Entität, die von einer anderen Entität vollständig abhängig ist         | Die Entität Arbeitszeit ist schwach gegenüber der Entität Mitarbeiter                       |     |
 
-Alle eindeutig identifierzierbaren Objekte werden als Entitäten bezeichnet, egal ob es Personen, Rechnungen auf Papier oder nur elektronische Daten sind.\
-Objekte haben Eigenschaften; 
+Als Entität bezeichnet man alles, was eindeutig Identifizierbar ist, z.B. Personen, Rechnungen (auf Papier) oder nur elektronische Daten.\
+Alle Objekte haben Eigenschaften; 
 - Personen haben einen Namen
 - Produkte haben einen Preis und ggf. ein Mindesthaltbarkeitsdatum
 - Rechnungen haben ein Datum und eine Anschrift
@@ -28,7 +28,7 @@ Eine Person ist ein Mitarbeiter, z.B. ein Verkäufer. Dieser verkauft Produkte u
 
 Verschiedene Arten von Mitarbeitern sind Subtypen der Entität Mitarbeiter; Verkäufer, Informatiker, Schreibkräfte.\
 Somit ist Mitarbeiter auch ein Supertyp der verschiedenen Teilgruppen.\
-Wenn eine Entität Arbeitszeit pro Mitarbeiter erfasst wird, so ist diese schwach gegenüber der Entität Mitarbeiter - ohne Mitarbeiter kann die Arbeitszeit nicht existieren.
+Wenn eine Entität Arbeitszeit pro Mitarbeiter erfasst wird, so ist diese schwach gegenüber der Entität Mitarbeiter - ohne einen Mitarbeiter dem sie zugeordnet ist kann die Arbeitszeit nicht existieren.
 
 Das folgende Bild zeigt den Zusammenhang zwischen einer Entität und Eigenschaften:\
 Eine Person hat
@@ -55,8 +55,7 @@ Ein Beispiel für Beziehungen lässt sich einfach mit den Entitäten "Abteilung"
 
 ![[Pasted image 20260411155126.png]] bzw. in Kurzform: ![[Pasted image 20260411155144.png]]
 
-Das ist auch schon das Prinzip des ER-Modells. Entitäten und ihre Beziehungen zueinander, inklusive einer Anzahl.\
-Zur Lesart: Hier handelt es sich um eine "m zu 1" Beziehung - immer vom kleineren zum geößeren hin.
+Das ist auch schon das Prinzip des ER-Modells. Entitäten und ihre Beziehungen zueinander, inklusive einer Anzahl.
 
 #### Subtypen
 
