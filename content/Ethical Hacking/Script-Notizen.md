@@ -77,7 +77,16 @@ Ablauf PenTest:
 	6. Festlegung von Art und Modalitäten der Ergebnisdokumentation und -besprechung: Techniken des Angriffs i.d.R. irrelevant, gefundene Schwachstellen dagegen sehr wichtig
 	7. Festlegung von Verantwortungen und Schadensersatzleistungen: Was passiert / Wer haftet bei Versehentlichen Schadensfällen während des PenTest
 
-HIER FEHLT BSI-QUARK, 4.2.3
+BSI-Leitfaden für Pentests enthält unter anderem die folgenden Anforderungen:
+	- Test-Team aus mindestens zwei Personen wegen der 4-Augen-Prinzips
+	- Prüfer / Prüfstellen sollten nie ohne schriftlichen Auftrag testen, daher sollte immer ein Vertrag zwischen Prüfern und zu testender Institution geschlossen werden
+	- Sind Dienste zu Hostern ausgelagert, muss auch dieser in den Vertrag einbezogen werden
+	- Der Vertrag sollte Rahmenbedingungen wie Prüfzeitraum, Prüfobjekt und Prüftiefe spezifizieren
+	- Vereinbarungen zu Haftbarkeit und Verschwiegenheit sollten getroffen werden
+	- Vertrag sollte beinhalten, dass gefundene Ergebnisse nur zum Zeitpunkt der Tests gültig sind und wegen eventueller Beschränkungen nicht gewährleistet ist, dass alle Fehler gefunden werden
+	- Datenschutz muss zu jeder Zeit gewährleistet bleibt. Wenn Personenbezogene Daten betroffen sind, so muss der Datenschutzbeauftragte und ggf. auch die Personalvertretung vor den Tests einbezogen werden
+	- Betroffene Personenkreise solltn vor dem Test benachrichtigt werden, um Unmut zu vermeiden
+	- Bei den gewählten Zeiträumen sollte beachtet werden, keinen Wartungszeitraum zu nutzen
 
 Cyber-Kill-Chain
 1. Reconnaissance
@@ -109,6 +118,10 @@ Automatisierte Schwachstellensuche\
 	Qualys Web Application Scanner\
 	Metasploit\
 	NMAP
+
+Active Directory, Outlook, Office
+	HIER AUSGELASSEN
+
 
 Threat Modelling
 - Definition des Systems oder der Anwendung, das analysiert werden soll
@@ -148,9 +161,15 @@ Links auf S. 37
 Weitere verwandte Konzepte
 - Bug Bounty
 - Auditierung und Zertifizierung
+	- ISO 270001 (Information Security Management Systems)
+	- ISO 9001 (QM-Systeme)
+	- IT-Grunschutz nach BSI
+	- Common Criteria for Information Technology Security Evaluation
 - Software Testing
 - RE (Reverse Engineering)
 - Ethische Aspekte
+	- Responsible Disclosure
+	- Full Disclosure
 - Rechtliche Aspekte
 
 -------------------
@@ -165,4 +184,3 @@ Genannte Tools:
 - NMAP
 
 (Links dazu auf Seite 28, PDF)
-
