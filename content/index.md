@@ -1,14 +1,14 @@
-Folgende Module sind hier bislang festgehalten:
+Fünftes Semester, whoop whoop!
 
 
 
-\[\[1. Malware-Arten|Malware-Analyse]]
+\[\[1. Malware-Arten|Malware-Analyse]]  || WiP
 
 
 
-\[\[1- Grundlagen zur Untersuchung|Mobile Forensics]]
+\[\[1 - Grundlagen zur Untersuchung|Mobile Forensics]]  || WiP
 
 
 
-\[\[Wireshark|Computerforensik 2]]
+\[\[Wireshark|Computerforensik 2]] || WiP
 
