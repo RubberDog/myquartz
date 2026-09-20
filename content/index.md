@@ -2,13 +2,13 @@ Folgende Module sind hier bislang festgehalten:
 
 
 
-\[\[4n6-Website|Computer-Forensik I]]
+\[\[1. Malware-Arten|Malware-Analyse]]
 
 
 
-\[\[Script-Notizen|Ethical Hacking]]
+\[\[1- Grundlagen zur Untersuchung|Mobile Forensics]]
 
 
 
-\[\[Datenbanken-Übersicht|Datenbanken I]]
+\[\[Wireshark|Computerforensik 2]]
 
