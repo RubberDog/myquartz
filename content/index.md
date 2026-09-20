@@ -6,7 +6,7 @@ Fünftes Semester, whoop whoop!
 
 
 
-\[\[1 - Grundlagen zur Untersuchung|Mobile Forensics]]  || WiP
+\[\[1 - Grundlagen zur Untersuchung|Mobile Forensics]]
 
 
 
