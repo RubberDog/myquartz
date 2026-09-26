@@ -1,0 +1,1 @@
+Ist eigentlich nur eine Kopie des Wikipedia-Artikels.. Kann man lesen, als Hintergrundwissen nice, für die Prüfung aber definitiv nicht wirklich wichtig.
