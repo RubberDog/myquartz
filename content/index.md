@@ -12,3 +12,7 @@ Fünftes Semester, whoop whoop!
 
 \[\[Wireshark|Computerforensik 2]] || WiP
 
+
+
+\[\[1 - Einüfhrung in die Kryptographie|Krypto 1]] || WiP
+
