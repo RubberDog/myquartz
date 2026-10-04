@@ -34,6 +34,6 @@ Das Intuitive Ziel kryptographischer Verfahren ist die Vertraulichkeit, so dass 
 
 Weitere Aspekte sind Authentizität, Integrität, Anonymität und Verbindlichkeit.
 
-Abbildung aus dem Script:
+Abbildung aus dem Script:\
 ![[Pasted image 20261004110209.png]]
 
