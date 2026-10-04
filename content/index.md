@@ -14,5 +14,5 @@ Fünftes Semester, whoop whoop!
 
 
 
-\[\[1 - Einüfhrung in die Kryptographie|Krypto 1]] || WiP
+\[\[1 - Einführung in die Kryptographie|Krypto 1]] || WiP
 
